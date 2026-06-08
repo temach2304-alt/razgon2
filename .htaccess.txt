@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+<FilesMatch "\.(sql|log|ini|sh)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+Options -Indexes
+ErrorDocument 403 /403.php
+ErrorDocument 404 /404.php
